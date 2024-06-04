@@ -19,10 +19,10 @@ import org.apache.commons.math3.linear.RealVector;
  * |a - λ, b|
  * |c, d - λ| = 0
  */
-public class EigenHelper {
+public class MatrixHelper {
     private final EigenDecomposition eigenDecomposition;
 
-    private EigenHelper(double[][] matrix) {
+    private MatrixHelper(double[][] matrix) {
         // using apache commons math library, to create a matrix.
         var realMatrix = MatrixUtils.createRealMatrix(matrix);
 
@@ -36,8 +36,8 @@ public class EigenHelper {
      * @param matrix a 2D array of double
      * @return an instance of CalculateEigenvalue
      */
-    public static EigenHelper of(double[][] matrix) {
-        return new EigenHelper(matrix);
+    public static MatrixHelper of(double[][] matrix) {
+        return new MatrixHelper(matrix);
     }
 
     /**
@@ -65,5 +65,14 @@ public class EigenHelper {
         }
 
         return realVectors;
+    }
+
+    /**
+     * Calculate the determinant of the matrix
+     *
+     * @return a double
+     */
+    public double getDeterminant() {
+        return eigenDecomposition.getDeterminant();
     }
 }
