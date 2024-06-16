@@ -25,7 +25,7 @@ class NeuronTest {
         var neuron = Neuron.of(weights, bias);
 
         double[] inputs = {1, 1};
-        double output = neuron.activationFunction(inputs);
+        double output = neuron.calculateOutput(inputs, Utils::sigmoid);
 
         assertTrue(output > 0.5);
     }
